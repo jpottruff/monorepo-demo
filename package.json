@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prettier:format": "prettier . --write",
+    "prettier:check": "prettier . --check",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,6 +13,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.5.2",
   "devDependencies": {
+    "prettier": "^3.5.3",
     "turbo": "^2.4.4"
   },
   "volta": {
