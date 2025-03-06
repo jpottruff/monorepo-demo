@@ -1,9 +1,9 @@
-import express from "express";
+import express, { Application, NextFunction, Request, Response } from "express";
 
-const app = express();
+const app: Application = express();
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response, _next: NextFunction) => {
   res.json({ message: "Hello from the Express API! ...with typescript" });
 });
 
