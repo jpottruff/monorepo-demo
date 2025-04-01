@@ -27,7 +27,7 @@
     "typescript-eslint": "^8.26.0"
   },
   "lint-staged": {
-    "*.{html,ts,tsx,js,jsx}": "pnpm run prettier:format"
+    "*.{html,ts,tsx,js,jsx}": "pnpm prettier --write"
   },
   "volta": {
     "node": "22.14.0",
