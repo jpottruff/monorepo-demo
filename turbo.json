@@ -1,13 +1,12 @@
 {
-    "extends": "turbo",
-    "pipeline": {
-      "build": {
-        "dependsOn": ["^build"],
-        "outputs": [".turbo"]
-      },
-      "dev": {
-        "cache": false
-      }
+  "extends": "turbo",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".turbo"]
+    },
+    "dev": {
+      "cache": false
     }
   }
-  
+}
