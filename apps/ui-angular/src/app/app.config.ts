@@ -12,6 +12,10 @@ export const appConfig: ApplicationConfig = {
     providePrimeNG({
       theme: {
         preset: Aura,
+        options: {
+          // eslint-disable-next-line no-constant-binary-expression
+          darkModeSelector: false || 'none',
+        },
       },
     }),
     provideZoneChangeDetection({ eventCoalescing: true }),
