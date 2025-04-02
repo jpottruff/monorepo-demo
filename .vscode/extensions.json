@@ -9,6 +9,8 @@
     "donjayamanne.githistory",
     "eamodio.gitlens",
     "GitHub.vscode-pull-request-github",
+    "firsttris.vscode-jest-runner",
+    "streetsidesoftware.code-spell-checker",
     "aaron-bond.better-comments",
     "johnpapa.vscode-peacock"
   ],
