@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { HealthCheckData, HealthStatus } from '@monorepo-demo/types';
 import { lastValueFrom } from 'rxjs';
-import { HealthCheckData, HealthStatus } from './health-check.model';
 
 @Injectable({
   providedIn: 'root',

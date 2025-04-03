@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
+import { HealthCheckData, HealthStatus } from '@monorepo-demo/types';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
-import { HealthCheckData, HealthStatus } from './health-check.model';
 import { HealthCheckService } from './health-check.service';
 
 @Component({
