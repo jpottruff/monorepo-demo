@@ -1,7 +1,66 @@
 <p-button
   severity="secondary"
   pTooltip="Health Check"
-  tooltipPosition="bottom"
+  tooltipPosition="top"
   icon="pi pi-server"
   aria-label="Health check"
+  (click)="openDialog()"
 />
+
+<p-dialog
+  header="Health Check"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '50rem' }"
+>
+  <div class="card">
+    <p-table [value]="statusDetails()" [tableStyle]="{ 'min-width': '40rem' }">
+      <ng-template #header>
+        <tr>
+          <th>App</th>
+          <th>
+            <i
+              class="pi pi-server"
+              pTooltip="Server Status"
+              tooltipPosition="top"
+            ></i>
+          </th>
+          <th>
+            <i
+              class="pi pi-database"
+              pTooltip="Database Status"
+              tooltipPosition="top"
+            ></i>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-data>
+        <tr>
+          <td>{{ data.application }}</td>
+          <td>
+            <i
+              class="pi pi-circle-on"
+              [ngClass]="
+                data.serverStatus === HealthStatus.ONLINE ? 'online' : 'offline'
+              "
+              [pTooltip]="data.serverStatus"
+              tooltipPosition="top"
+            ></i>
+          </td>
+          <td>
+            <i
+              class="pi pi-circle-on"
+              [ngClass]="
+                data.mongoStatus === HealthStatus.CONNECTED
+                  ? 'connected'
+                  : 'disconnected'
+              "
+              [pTooltip]="data.mongoStatus"
+              tooltipPosition="top"
+            ></i>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</p-dialog>
