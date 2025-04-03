@@ -1,18 +1,10 @@
-import express, { Application, NextFunction, Request, Response } from 'express';
+import express, { Application } from 'express';
+import healthCheckRoutes from './routes/healthcheck.routes';
 
 const app: Application = express();
 app.use(express.json());
 
 // Routes
-app.get('/', (req: Request, res: Response, _next: NextFunction) => {
-  res.json({ message: 'Hello from the Express API! ...with TypeScript' });
-});
-
-app.get('/api/healthcheck', async (req, res) => {
-  const serverStatus = 'up';
-  // TODO Replace with actual MongoDB connection check
-  const mongoStatus = 'disconnected';
-  res.json({ server: serverStatus, database: mongoStatus });
-});
+app.use('/api/healthcheck', healthCheckRoutes);
 
 export default app;
