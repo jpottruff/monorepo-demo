@@ -5,9 +5,9 @@ import healthCheckRoutes from './routes/healthcheck.routes';
 
 const app: Application = express();
 
-// TODO fix ts error for await
-// await connectDatabases();
-connectDatabases();
+(async () => {
+  await connectDatabases();
+})();
 
 // TODO - this should be tightened up
 app.use(
