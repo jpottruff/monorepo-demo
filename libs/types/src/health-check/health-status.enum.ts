@@ -1,0 +1,6 @@
+export enum HealthStatus {
+  ONLINE = 'ONLINE',
+  OFFLINE = 'OFFLINE',
+  CONNECTED = 'CONNECTED',
+  DISCONNECTED = 'DISCONNECTED',
+}

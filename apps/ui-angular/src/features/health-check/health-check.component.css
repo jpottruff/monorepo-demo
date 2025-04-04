@@ -1,0 +1,12 @@
+.connected,
+.online {
+  color: green;
+}
+
+.offline {
+  color: red;
+}
+
+.disconnected {
+  color: darkgray;
+}
