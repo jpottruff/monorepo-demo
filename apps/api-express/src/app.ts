@@ -1,8 +1,13 @@
 import cors from 'cors';
 import express, { Application } from 'express';
+import connectDatabases from './databases';
 import healthCheckRoutes from './routes/healthcheck.routes';
 
 const app: Application = express();
+
+// TODO fix ts error for await
+// await connectDatabases();
+connectDatabases();
 
 // TODO - this should be tightened up
 app.use(
