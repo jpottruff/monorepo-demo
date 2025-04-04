@@ -19,7 +19,7 @@ describe('HealthCheckController', () => {
       // Mock mongoose connection state to ONLINE (1)
       Object.defineProperty(mongoose.connection, 'readyState', {
         value: 1,
-        configurable: true, // This makes it configurable
+        configurable: true,
       });
 
       const expectedResponse: HealthCheckData = {
