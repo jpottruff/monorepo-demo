@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { mockActivatedRoute } from '../../__mocks__/activated-route.mock';
+import { mockHttpClientDeps } from '../../__mocks__/http-client.mock';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -10,7 +11,7 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HeaderComponent],
-      providers: [mockActivatedRoute()],
+      providers: [mockActivatedRoute(), ...mockHttpClientDeps()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);

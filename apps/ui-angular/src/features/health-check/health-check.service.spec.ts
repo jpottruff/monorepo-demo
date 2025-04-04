@@ -1,9 +1,5 @@
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
-import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { mockHttpClientDeps } from '../../__mocks__/http-client.mock';
 import { HealthCheckService } from './health-check.service';
 
 describe('HealthCheckService', () => {
@@ -11,11 +7,7 @@ describe('HealthCheckService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        HealthCheckService,
-        provideHttpClient(withInterceptorsFromDi()),
-        provideHttpClientTesting(),
-      ],
+      providers: [HealthCheckService, ...mockHttpClientDeps()],
     });
     service = TestBed.inject(HealthCheckService);
   });
