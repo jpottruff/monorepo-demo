@@ -29,5 +29,3 @@ const getMongoStatus = (): HealthStatus => {
       return HealthStatus.UNKNOWN;
   }
 };
-
-// export default HealthCheckController;
