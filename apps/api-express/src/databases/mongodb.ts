@@ -1,6 +1,9 @@
+import { initLogger } from '@monorepo-demo/logger';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import path from 'path';
+
+const log = initLogger('database.mongodb');
 
 const dotenvPath = path.resolve(__dirname, '../../../../.env');
 dotenv.config({ path: dotenvPath });
@@ -11,7 +14,7 @@ if (
   !process.env.MONGO_SERVER ||
   !process.env.MONGO_PORT
 ) {
-  console.error('Missing required environment variables.');
+  log.error('Missing required environment variables for MongoDB connection');
   process.exit(1);
 }
 
@@ -21,9 +24,9 @@ const DATABASE_URI = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PW
 const connectMongoDB = async () => {
   try {
     await mongoose.connect(DATABASE_URI);
-    console.log('MongoDB connected...');
+    log.info('MongoDB connected');
   } catch (err) {
-    console.error('MongoDB connection failed!', err);
+    log.error('MongoDB connection failed!', err);
     process.exit(1);
   }
 };
