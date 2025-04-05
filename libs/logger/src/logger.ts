@@ -15,7 +15,12 @@ if (!process.env.SEQ_SERVER_URL) {
 
 const logger = winston.createLogger({
   transports: [
+    new winston.transports.Console({
+      level: process.env.SEQ_LOG_LEVEL || 'silly',
+      format: winston.format.cli(),
+    }),
     new SeqTransport({
+      level: process.env.SEQ_LOG_LEVEL || 'debug',
       serverUrl: process.env.SEQ_SERVER_URL,
       // apiKey: process.env.SEQ_API_KEY, // TODO: Add API key if needed
       onError: (e) => {
