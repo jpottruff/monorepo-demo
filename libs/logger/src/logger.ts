@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import winston from 'winston';
 
+// Environment variables
 const dotenvPath = path.resolve(__dirname, '../../../.env');
 dotenv.config({ path: dotenvPath });
 
@@ -16,34 +17,41 @@ if (!process.env.SEQ_SERVER_URL) {
 // Formatting
 const { combine, timestamp, json, errors } = winston.format;
 
-// Meta information
-const defaultMeta = {
-  context: 'logger',
+export const initLogger = (
+  callingContext: string,
+  metadata?: Record<string, unknown>
+): winston.Logger => {
+  const defaultMeta = {
+    context: callingContext ?? 'logger',
+    ...metadata,
+  };
+
+  const logger = winston.createLogger({
+    defaultMeta,
+    format: combine(errors({ stack: true }), timestamp(), json()),
+    transports: [
+      new winston.transports.Console({
+        level: process.env.SEQ_LOG_LEVEL || 'silly',
+        format: winston.format.cli(),
+      }),
+      new SeqTransport({
+        level: process.env.SEQ_LOG_LEVEL || 'debug',
+        serverUrl: process.env.SEQ_SERVER_URL,
+        // apiKey: process.env.SEQ_API_KEY, // TODO: Add API key if needed
+        onError: (e) => {
+          console.error(e);
+        },
+        handleExceptions: true,
+        handleRejections: true,
+      }),
+    ],
+    // TODO - this might not be best practice; look into appropriate handling
+    exitOnError: false,
+  });
+
+  logger.silly(`Logger initialized for ${callingContext}`, {
+    seq_url: process.env.SEQ_SERVER_URL,
+  });
+
+  return logger;
 };
-
-const logger = winston.createLogger({
-  defaultMeta,
-  format: combine(errors({ stack: true }), timestamp(), json()),
-  transports: [
-    new winston.transports.Console({
-      level: process.env.SEQ_LOG_LEVEL || 'silly',
-      format: winston.format.cli(),
-    }),
-    new SeqTransport({
-      level: process.env.SEQ_LOG_LEVEL || 'debug',
-      serverUrl: process.env.SEQ_SERVER_URL,
-      // apiKey: process.env.SEQ_API_KEY, // TODO: Add API key if needed
-      onError: (e) => {
-        console.error(e);
-      },
-      handleExceptions: true,
-      handleRejections: true,
-    }),
-  ],
-  // TODO - this might not be best practice; look into appropriate handling
-  exitOnError: false,
-});
-
-logger.info('Logger initialized at {url}', { url: process.env.SEQ_SERVER_URL });
-
-export default logger;
