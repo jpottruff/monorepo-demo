@@ -13,9 +13,16 @@ if (!process.env.SEQ_SERVER_URL) {
   process.exit(1);
 }
 
+// Formatting
 const { combine, timestamp, json, errors } = winston.format;
 
+// Meta information
+const defaultMeta = {
+  context: 'logger',
+};
+
 const logger = winston.createLogger({
+  defaultMeta,
   format: combine(errors({ stack: true }), timestamp(), json()),
   transports: [
     new winston.transports.Console({
@@ -33,6 +40,7 @@ const logger = winston.createLogger({
       handleRejections: true,
     }),
   ],
+  // TODO - this might not be best practice; look into appropriate handling
   exitOnError: false,
 });
 
