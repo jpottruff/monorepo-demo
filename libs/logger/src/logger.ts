@@ -13,7 +13,10 @@ if (!process.env.SEQ_SERVER_URL) {
   process.exit(1);
 }
 
+const { combine, timestamp, json, errors } = winston.format;
+
 const logger = winston.createLogger({
+  format: combine(errors({ stack: true }), timestamp(), json()),
   transports: [
     new winston.transports.Console({
       level: process.env.SEQ_LOG_LEVEL || 'silly',
