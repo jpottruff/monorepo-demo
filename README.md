@@ -17,3 +17,9 @@ The `/apps` folder houses the individual UI and API applications for the project
 ## Containers
 
 The `/containers` folder houses the `docker-compose` files for any containerized dependencies the application may need (database, message broker, logger, etc)
+
+## Useful Links
+
+### Development
+
+Seq: http://localhost:5341/
