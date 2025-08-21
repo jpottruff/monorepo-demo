@@ -8,7 +8,9 @@
     "prettier:format": "prettier . --write",
     "prettier:check": "prettier . --check",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky"
+    "prepare": "husky",
+    "start:ui:dev": "pnpm --filter ui-angular start",
+    "start:api:dev": "pnpm --filter api-express start:dev"
   },
   "keywords": [],
   "author": "",
