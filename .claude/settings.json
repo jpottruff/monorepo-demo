@@ -4,7 +4,8 @@
     "deny": [
       "Bash(* **/.env*)",
       "Read(**/.env*)",
-      "Edit(**/.env*)"
+      "Edit(**/.env*)",
+      "Bash(git push*main*)"
     ]
   }
 }
