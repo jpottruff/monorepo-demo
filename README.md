@@ -1,8 +1,25 @@
 # Monorepo Demo
 
-## Key Technologies
+## Environment Prereqs / Initial Setup
 
-- (Optional) [Volta](https://volta.sh/)
+[Volta](https://volta.sh/) - manages Node and pnpm versions automatically
+[Docker](https://www.docker.com/) - runs service containers for the project (database, logging, etc)
+
+## Environment Variables
+
+Copy `.env.example` to `.env` — default values align with the container default configurations but can be modified as needed.
+
+## Running Services
+
+Run docker compose up -d from within a container's folder to start it individually.
+
+## Running Apps
+
+Start scripts are available in the root `package.json`. See each app's `README.md` for further details.
+
+## Tech Stack Overview
+
+- [Volta](https://volta.sh/)
 - [PNPM Workspaces](https://pnpm.io/pnpm-workspace_yaml)
 - [Turborepo](https://turbo.build/)
 - [Prettier](https://prettier.io/)

@@ -1,9 +1,13 @@
 # Logger
 
-## Key Technologies
+## Tech Stack
 
 - [Seq](https://docs.datalust.co/docs/using-nodejs)
 - [Winston](https://github.com/winstonjs/winston)
+
+## Requirements
+
+Seq must be running and `SEQ_SERVER_URL` must be set in `.env`. See `/containers/seq` to start Seq locally.
 
 ## Log Levels
 
